@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Rafael Rozon",
+      "authorEmail": "rafaelrozon.developer@gmail.com",
+      "authorUrl": "rafaelrozon.com"
+    }
+  }
+}
