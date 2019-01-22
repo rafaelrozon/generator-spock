@@ -9,11 +9,10 @@ const getFilename = (name, ext = 'jsx', path = null) =>
 
 const getTemplateData = props => {
     const { moduleBaseName, moduleName, name } = props;
-
     return {
-        name,
+        name: name || '',
         moduleCss: changeCase.paramCase(moduleName),
-        moduleBaseName: moduleBaseName || '',
+        moduleBaseName: moduleBaseName || changeCase.snakeCase(moduleName),
         moduleName: moduleName || ''
     };
 };
