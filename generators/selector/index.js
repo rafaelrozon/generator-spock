@@ -1,29 +1,16 @@
 'use strict';
 const chalk = require('chalk');
-const yosay = require('yosay');
 const Base = require('../base');
 
 module.exports = class extends Base {
-    constructor(args, options) {
-        super(args, options);
-        console.log('Component Generator');
+    constructor(args, props) {
+        super(args, props);
+        // console.log('Selectors Generator');
     }
 
     prompting() {
-
         if (this.shouldPrompt()) {
             const prompts = [
-                {
-                    type: 'list',
-                    name: 'type',
-                    message: 'Enter component type',
-                    choices: [
-                        'class',
-                        'functional',
-                        'connected',
-                        'functional_native'
-                    ]
-                },
                 this.utils.getModuleNamePrompt(),
                 this.utils.getDestFolderPrompt()
             ];
@@ -35,11 +22,11 @@ module.exports = class extends Base {
     }
 
     writing() {
-        const { type, destinationPath, moduleName, filename } = this.options;
+        const { destinationPath, moduleName, filename } = this.options;
 
         const file = this.utils.getFilename(
             filename || moduleName,
-            'jsx',
+            'js',
             destinationPath,
             typeof filename !== 'undefined'
         );
@@ -48,7 +35,7 @@ module.exports = class extends Base {
             moduleName
         });
 
-        const source = `_${type}_component.template.js`;
+        const source = `_selectors.template.js`;
 
         this.fs.copyTpl(
             this.templatePath(source),

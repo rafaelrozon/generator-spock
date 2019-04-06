@@ -1,65 +1,57 @@
 'use strict';
 const chalk = require('chalk');
-const yosay = require('yosay');
 const Base = require('../base');
 
 const moduleReducer = 'module';
 const pageReducer = 'page';
 
 module.exports = class extends Base {
-    constructor(args, props) {
-        super(args, props);
-        console.log('Reducer Generator', args, props.options);
+    constructor(args, opts) {
+        super(args, opts);
+        // console.log('Reducer Generator', args, opts);
     }
 
     prompting() {
 
-      if (this.shouldPrompt()) {
-        console.log('>>>> ', this.props);
+        if (this.shouldPrompt()) {
 
-        this.log(
-            yosay(
-                `Welcome to the ${chalk.red(
-                    'generator-spock-2'
-                )} generator! Let's create a reducer`
-            )
-        );
-          this.log(chalk.red('Reducer generator'));
-          const prompts = [
-              {
-                type: 'list',
-                name: 'type',
-                message: 'Enter reducer type',
-                choices: [pageReducer, moduleReducer]
-              },
-              this.utils.getDestFolderPrompt(),
-              this.utils.getModuleNamePrompt()
-          ];
+            this.log(chalk.red('Reducer generator'));
 
-          return this.prompt(prompts).then(props => {
-              this.props = props;
-          });
-      }
+            const prompts = [
+                {
+                    type: 'list',
+                    name: 'type',
+                    message: 'Enter reducer type',
+                    choices: [pageReducer, moduleReducer]
+                },
+                this.utils.getModuleNamePrompt(),
+                this.utils.getDestFolderPrompt()
+            ];
 
+            return this.prompt(prompts).then(props => {
+                this.options = props;
+            });
+        }
     }
 
     writing() {
-        this.log(chalk.green('Scafolding Reducer'));
-        console.log(this.props)
-        const { type, destinationFolder, moduleName } = this.props;
+        const { moduleName, destinationPath, type, filename } = this.options;
 
-        const filename = this.utils.getFilename(
-            moduleName,
-            'jsx',
-            destinationFolder
+        const file = this.utils.getFilename(
+            filename || moduleName,
+            'js',
+            destinationPath,
+            typeof filename !== 'undefined'
         );
-        const templateData = this.utils.getTemplateData(this.props);
+        const templateData = this.utils.getTemplateData({
+            moduleName
+        });
 
         const source = `_${type}_reducer.template.js`;
 
         this.fs.copyTpl(
             this.templatePath(source),
-            this.destinationPath(filename),
+            this.destinationPath(file),
             templateData
         );
     }

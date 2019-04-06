@@ -1,3 +1,6 @@
+/**
+ * <%= moduleName %> Reducer
+ */
 import * as Types from './types';
 
 export default (state = {}, action) => {
@@ -6,4 +9,3 @@ export default (state = {}, action) => {
             return state;
     }
 };
-

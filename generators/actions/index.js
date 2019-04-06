@@ -4,53 +4,50 @@ const yosay = require('yosay');
 const Base = require('../base');
 
 module.exports = class extends Base {
-    constructor(args, props) {
-        super(args, props);
-        console.log('Actions Generator');
+    constructor(args, opts) {
+        super(args, opts);
+        // console.log('Actions Generator', opts);
+        // console.log('Actions Generator', opts);
     }
 
     prompting() {
-        this.log(
-            yosay(
-                `Welcome to the sweet ${chalk.red(
-                    'generator-spock-2'
-                )} generator!`
-            )
-        );
+        if (this.shouldPrompt()) {
+            const prompts = [
+                {
+                    type: 'list',
+                    name: 'type',
+                    message: 'Enter action type',
+                    choices: ['actions', 'types']
+                },
+                this.utils.getDestFolderPrompt(),
+                this.utils.getModuleNamePrompt()
+            ];
 
-        const prompts = [
-            {
-                type: 'list',
-                name: 'type',
-                message: 'Enter action type',
-                choices: [
-                    'actions',
-                    'types'
-                ]
-            },
-            this.utils.getDestFolderPrompt(),
-            this.utils.getModuleNamePrompt()
-        ];
-
-        return this.prompt(prompts).then(props => {
-            this.props = props;
-        });
+            return this.prompt(prompts).then(props => {
+                this.options = props;
+            });
+        }
     }
 
     writing() {
-        const { type, destinationPath } = this.props;
-        const filename = this.utils.getFilename(
-            this.props.moduleName,
-            'jsx',
-            destinationPath
+        const { destinationPath, moduleName, type, filename } = this.options;
+
+        const file = this.utils.getFilename(
+            filename || moduleName,
+            'js',
+            destinationPath,
+            typeof filename !== 'undefined'
         );
-        const templateData = this.utils.getTemplateData(this.props);
+
+        const templateData = this.utils.getTemplateData({
+            moduleName
+        });
 
         const source = `_${type}.template.js`;
 
         this.fs.copyTpl(
             this.templatePath(source),
-            this.destinationPath(filename),
+            this.destinationPath(file),
             templateData
         );
     }
