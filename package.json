@@ -1,19 +1,23 @@
 {
   "name": "generator-spock-2",
-  "version": "0.0.0",
-  "description": "",
-  "homepage": "",
+  "version": "1.0.0",
+  "description": "React/Redux Yeoman Generators",
   "author": {
     "name": "Rafael Rozon",
-    "email": "rafaelrozon.developer@gmail.com",
-    "url": "rafaelrozon.com"
+    "email": "rafaelrozon.developer@gmail.com"
   },
   "files": [
     "generators"
   ],
   "main": "generators/index.js",
   "keywords": [
-    "",
+    "react",
+    "redux",
+    "reselect",
+    "generator",
+    "yeoman",
+    "yo",
+    "spock",
     "yeoman-generator"
   ],
   "devDependencies": {
@@ -70,6 +74,6 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "rafaelrozon/generator-spock-2",
+  "repository": "rafaelrozon/generator-spock",
   "license": "MIT"
 }

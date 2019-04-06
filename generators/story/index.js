@@ -5,8 +5,8 @@ module.exports = class extends Base {
     prompting() {
         if (this.shouldPrompt()) {
             const prompts = [
-                this.utils.getDestFolderPrompt(),
-                this.utils.getModuleNamePrompt()
+                this.utils.getModuleNamePrompt(),
+                this.utils.getDestFolderPrompt()
             ];
 
             return this.prompt(prompts).then(options => {

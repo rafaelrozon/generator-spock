@@ -3,17 +3,11 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-spock-2 using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-spock using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
 npm install -g generator-spock
-```
-
-Then generate your new project:
-
-```bash
-yo spock
 ```
 
 ## Available Generators
@@ -22,6 +16,12 @@ yo spock
 - Reducer
 - Selector
 - Story
+
+## Options
+All generators take these options:
+- destinationPath: where to output, defaults to current directory
+- moduleName
+- filename: unless specified the filename is the module name
 
 ### Action Generator
 
@@ -35,7 +35,7 @@ Options: actions and types
 
 Actions option output:
 
-```bash
+```jsx
 /**
 * ShoppingCart Actions
 */
@@ -44,7 +44,7 @@ import * as Types from './types';
 
 Types option output:
 
-```bash
+```jsx
 /**
 * ShoppingCart Types
 */
@@ -62,7 +62,7 @@ Options: class, functional, connected, native
 
 Class option ouput:
 
-```bash
+```jsx
 /**
 * DatePicker
 */
@@ -82,7 +82,7 @@ export default class DatePicker extends React.Component {
 
 Function option output:
 
-```bash
+```jsx
 /**
 * DatePicker
 */
@@ -101,12 +101,11 @@ export default DatePicker;
 
 Connected option output:
 
-```bash
+```jsx
 /**
 * DatePicker
 */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from './DatePicker';
 
@@ -119,7 +118,7 @@ export default connect(makeMapToStateProps, mapDispatchToProps)
 
 Functional Native option output:
 
-```bash
+```jsx
 /**
 * DatePicker
 */
@@ -149,7 +148,7 @@ Options: page, module
 
 Page option output:
 
-```bash
+```jsx
 /**
 * ShoppingCart Reducer
 */
@@ -162,7 +161,7 @@ export default combineReducers({
 
 Module option output:
 
-```bash
+```jsx
 /**
 * ShoppingCart Reducer
 */
@@ -186,7 +185,7 @@ yo spock:selector
 
 Output:
 
-```bash
+```jsx
 /**
 * ShoppingCart Selectors
 */
@@ -204,7 +203,7 @@ yo spock:story
 
 Output
 
-```bash
+```jsx
 /**
 * ShoppingCart Stories
 */
@@ -222,6 +221,8 @@ stories.add('ShoppingCart', () => (
     </div>
 ));
 ```
+
+### TODO
 
 
 ## License
