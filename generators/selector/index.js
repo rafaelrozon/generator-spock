@@ -1,13 +1,7 @@
 'use strict';
-const chalk = require('chalk');
 const Base = require('../base');
 
 module.exports = class extends Base {
-    constructor(args, props) {
-        super(args, props);
-        // console.log('Selectors Generator');
-    }
-
     prompting() {
         if (this.shouldPrompt()) {
             const prompts = [

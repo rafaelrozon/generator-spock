@@ -1,5 +1,5 @@
 # generator-spock-2 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> 
+>
 
 ## Installation
 
@@ -7,21 +7,222 @@ First, install [Yeoman](http://yeoman.io) and generator-spock-2 using [npm](http
 
 ```bash
 npm install -g yo
-npm install -g generator-spock-2
+npm install -g generator-spock
 ```
 
 Then generate your new project:
 
 ```bash
-yo spock-2
+yo spock
 ```
 
-## Getting To Know Yeoman
+## Available Generators
+- Action
+- Component
+- Reducer
+- Selector
+- Story
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+### Action Generator
+
+Command:
+
+```bash
+yo spock:action
+```
+
+Options: actions and types
+
+Actions option output:
+
+```bash
+/**
+* ShoppingCart Actions
+*/
+import * as Types from './types';
+```
+
+Types option output:
+
+```bash
+/**
+* ShoppingCart Types
+*/
+```
+
+### Component Generator
+
+Command:
+
+```bash
+yo spock:component
+```
+
+Options: class, functional, connected, native
+
+Class option ouput:
+
+```bash
+/**
+* DatePicker
+*/
+import React from 'react';
+
+export default class DatePicker extends React.Component {
+    render() {
+        return (
+            <div className="date-picker">
+                DatePicker component
+            </div>
+        );
+    }
+}
+```
+
+
+Function option output:
+
+```bash
+/**
+* DatePicker
+*/
+import React from 'react';
+
+const DatePicker = () => {
+    return (
+        <div className="date-picker">
+            DatePicker component
+        </div>
+    );
+};
+
+export default DatePicker;
+```
+
+Connected option output:
+
+```bash
+/**
+* DatePicker
+*/
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import DatePicker from './DatePicker';
+
+const makeMapToStateProps = (state) => ({})
+
+const mapDispatchToProps = (dispath) => ({});
+
+export default connect(makeMapToStateProps, mapDispatchToProps)
+```
+
+Functional Native option output:
+
+```bash
+/**
+* DatePicker
+*/
+const React = require('react');
+const { View } = require('react-native');
+
+const DatePicker = () => {
+    return (
+        <View>
+            DatePicker component
+        </View>
+    );
+};
+
+module.exports = DatePicker;
+```
+
+### Reducer Generator
+
+Command:
+
+```bash
+yo spock:reducer
+```
+
+Options: page, module
+
+Page option output:
+
+```bash
+/**
+* ShoppingCart Reducer
+*/
+import { combineReducers } from 'redux';
+
+export default combineReducers({
+
+});
+```
+
+Module option output:
+
+```bash
+/**
+* ShoppingCart Reducer
+*/
+import * as Types from './types';
+
+export default (state = {}, action) => {
+    switch(action.type) {
+        default:
+            return state;
+    }
+};
+```
+
+### Selector Generator
+
+Command:
+
+```bash
+yo spock:selector
+```
+
+Output:
+
+```bash
+/**
+* ShoppingCart Selectors
+*/
+import { createSelector } from 'reselect';
+```
+
+
+### Story Generator
+
+Command:
+
+```bash
+yo spock:story
+```
+
+Output
+
+```bash
+/**
+* ShoppingCart Stories
+*/
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, text, boolean, number, object, array } from '@storybook/addon-knobs';
+
+const stories = storiesOf('ShoppingCart', module);
+
+stories.addDecorator(withKnobs);
+
+stories.add('ShoppingCart', () => (
+    <div>
+        ShoppingCart
+    </div>
+));
+```
+
 
 ## License
 

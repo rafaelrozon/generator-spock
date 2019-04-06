@@ -1,7 +1,6 @@
 const changeCase = require('change-case');
 
-module.exports = function getTemplateData(props) {
-    console.log('> getTemplateData', props)
+module.exports = function(props) {
     const { moduleBaseName, moduleName, name } = props;
     return {
         name: name || '',

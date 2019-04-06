@@ -1,7 +1,7 @@
 module.exports = function() {
     return {
         type: 'input',
-        name: 'moduleName',
-        message: 'Enter module name'
+        name: 'filename',
+        message: 'Enter filename'
     };
 };

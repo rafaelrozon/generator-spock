@@ -1,16 +1,8 @@
 'use strict';
-const chalk = require('chalk');
-const yosay = require('yosay');
 const Base = require('../base');
 
 module.exports = class extends Base {
-    constructor(args, options) {
-        super(args, options);
-        console.log('Component Generator');
-    }
-
     prompting() {
-
         if (this.shouldPrompt()) {
             const prompts = [
                 {

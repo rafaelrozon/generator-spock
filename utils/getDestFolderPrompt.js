@@ -1,4 +1,4 @@
-module.exports = function getDestFolderPrompt() {
+module.exports = function() {
     return {
         type: 'input',
         name: 'destinationFolder',

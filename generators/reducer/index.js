@@ -1,22 +1,12 @@
 'use strict';
-const chalk = require('chalk');
 const Base = require('../base');
 
 const moduleReducer = 'module';
 const pageReducer = 'page';
 
 module.exports = class extends Base {
-    constructor(args, opts) {
-        super(args, opts);
-        // console.log('Reducer Generator', args, opts);
-    }
-
     prompting() {
-
         if (this.shouldPrompt()) {
-
-            this.log(chalk.red('Reducer generator'));
-
             const prompts = [
                 {
                     type: 'list',
@@ -25,6 +15,7 @@ module.exports = class extends Base {
                     choices: [pageReducer, moduleReducer]
                 },
                 this.utils.getModuleNamePrompt(),
+                this.utils.getFilenamePrompt(),
                 this.utils.getDestFolderPrompt()
             ];
 

@@ -1,14 +1,7 @@
 'use strict';
-const chalk = require('chalk');
-
 const Base = require('../base');
 
 module.exports = class extends Base {
-    constructor(args, props) {
-        super(args, props);
-        console.log('Story Generator');
-    }
-
     prompting() {
         if (this.shouldPrompt()) {
             const prompts = [
@@ -20,7 +13,6 @@ module.exports = class extends Base {
                 this.options = options;
             });
         }
-
     }
 
     writing() {

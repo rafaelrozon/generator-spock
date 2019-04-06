@@ -1,6 +1,5 @@
 const changeCase = require('change-case');
 
-module.exports = function formatFileName(name) {
+module.exports = function(name) {
     return changeCase.pascalCase(name);
 };
-

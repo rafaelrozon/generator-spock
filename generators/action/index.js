@@ -1,15 +1,7 @@
 'use strict';
-const chalk = require('chalk');
-const yosay = require('yosay');
 const Base = require('../base');
 
 module.exports = class extends Base {
-    constructor(args, opts) {
-        super(args, opts);
-        // console.log('Actions Generator', opts);
-        // console.log('Actions Generator', opts);
-    }
-
     prompting() {
         if (this.shouldPrompt()) {
             const prompts = [
@@ -19,8 +11,9 @@ module.exports = class extends Base {
                     message: 'Enter action type',
                     choices: ['actions', 'types']
                 },
-                this.utils.getDestFolderPrompt(),
-                this.utils.getModuleNamePrompt()
+                this.utils.getModuleNamePrompt(),
+                this.utils.getFilenamePrompt(),
+                this.utils.getDestFolderPrompt()
             ];
 
             return this.prompt(prompts).then(props => {
