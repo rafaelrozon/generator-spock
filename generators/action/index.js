@@ -1,4 +1,3 @@
-'use strict';
 const Base = require('../base');
 
 module.exports = class extends Base {
@@ -9,10 +8,23 @@ module.exports = class extends Base {
                     type: 'list',
                     name: 'type',
                     message: 'Enter action type',
-                    choices: ['actions', 'types']
+                    choices: ['actions', 'types', 'both']
+                },
+                {
+                    type: 'input',
+                    name: 'actionFilename',
+                    message: 'Enter action filename',
+                    when: ({ type }) => {
+                        return type === 'actions' || type === 'both';
+                    }
+                },
+                {
+                    type: 'input',
+                    name: 'typesFilename',
+                    message: 'Enter types filename',
+                    default: 'types'
                 },
                 this.utils.getModuleNamePrompt(),
-                this.utils.getFilenamePrompt(),
                 this.utils.getDestFolderPrompt()
             ];
 
@@ -23,25 +35,66 @@ module.exports = class extends Base {
     }
 
     writing() {
-        const { destinationPath, moduleName, type, filename } = this.options;
-
-        const file = this.utils.getFilename(
-            filename || moduleName,
-            'js',
+        const {
             destinationPath,
-            typeof filename !== 'undefined'
-        );
+            moduleName,
+            type,
+            actionFilename = 'actions',
+            typesFilename = 'types'
+        } = this.options;
 
         const templateData = this.utils.getTemplateData({
-            moduleName
+            moduleName,
+            typesFilename
         });
 
-        const source = `_${type}.template.js`;
+        if (type === 'both') {
+            const actionsFile = '_actions.template.js';
+            const typesFile = '_types.template.js';
 
-        this.fs.copyTpl(
-            this.templatePath(source),
-            this.destinationPath(file),
-            templateData
-        );
+            const actionFile = this.utils.getFilename(
+                actionFilename,
+                'js',
+                destinationPath,
+                typeof actionsFile !== 'undefined'
+            );
+
+            const typeFile = this.utils.getFilename(
+                typesFilename,
+                'js',
+                destinationPath,
+                typeof typesFile !== 'undefined'
+            );
+
+            this.fs.copyTpl(
+                this.templatePath(actionsFile),
+                this.destinationPath(actionFile),
+                templateData
+            );
+
+            this.fs.copyTpl(
+                this.templatePath(typesFile),
+                this.destinationPath(typeFile),
+                templateData
+            );
+        } else {
+            const filename =
+                type === 'actions' ? actionFilename : typesFilename;
+
+            const file = this.utils.getFilename(
+                filename || moduleName,
+                'js',
+                destinationPath,
+                typeof filename !== 'undefined'
+            );
+
+            const source = `_${type}.template.js`;
+
+            this.fs.copyTpl(
+                this.templatePath(source),
+                this.destinationPath(file),
+                templateData
+            );
+        }
     }
 };

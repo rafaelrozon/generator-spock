@@ -33,7 +33,7 @@ yo spock:action
 
 Options: actions and types
 
-Actions option output:
+Actions option example output:
 
 ```jsx
 /**
@@ -42,7 +42,7 @@ Actions option output:
 import * as Types from './types';
 ```
 
-Types option output:
+Types option example output:
 
 ```jsx
 /**
@@ -60,7 +60,7 @@ yo spock:component
 
 Options: class, functional, connected, native
 
-Class option ouput:
+Class option example output:
 
 ```jsx
 /**
@@ -80,7 +80,7 @@ export default class DatePicker extends React.Component {
 ```
 
 
-Function option output:
+Function option example output:
 
 ```jsx
 /**
@@ -99,7 +99,7 @@ const DatePicker = () => {
 export default DatePicker;
 ```
 
-Connected option output:
+Connected option example output:
 
 ```jsx
 /**
@@ -116,7 +116,7 @@ const mapDispatchToProps = (dispath) => ({});
 export default connect(makeMapToStateProps, mapDispatchToProps)
 ```
 
-Functional Native option output:
+Functional Native option example output:
 
 ```jsx
 /**
@@ -146,7 +146,7 @@ yo spock:reducer
 
 Options: page, module
 
-Page option output:
+Page option example output:
 
 ```jsx
 /**
@@ -159,7 +159,7 @@ export default combineReducers({
 });
 ```
 
-Module option output:
+Module option example output:
 
 ```jsx
 /**
@@ -183,7 +183,7 @@ Command:
 yo spock:selector
 ```
 
-Output:
+example Output:
 
 ```jsx
 /**
@@ -201,7 +201,7 @@ Command:
 yo spock:story
 ```
 
-Output
+example Output
 
 ```jsx
 /**

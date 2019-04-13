@@ -1,4 +1,3 @@
-'use strict';
 const Base = require('../base');
 
 const moduleReducer = 'module';
@@ -34,6 +33,7 @@ module.exports = class extends Base {
             destinationPath,
             typeof filename !== 'undefined'
         );
+
         const templateData = this.utils.getTemplateData({
             moduleName
         });

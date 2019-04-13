@@ -1,4 +1,3 @@
-'use strict';
 const Base = require('../base');
 
 module.exports = class extends Base {
@@ -17,6 +16,7 @@ module.exports = class extends Base {
                     ]
                 },
                 this.utils.getModuleNamePrompt(),
+                this.utils.getFilenamePrompt(),
                 this.utils.getDestFolderPrompt()
             ];
 

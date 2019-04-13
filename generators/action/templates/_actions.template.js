@@ -1,4 +1,4 @@
 /**
  * <%= moduleName %> Actions
  */
-import * as Types from './types';
+import * as Types from './<%= typesFilename %>';
