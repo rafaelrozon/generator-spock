@@ -35,6 +35,9 @@ module.exports = class extends Base {
     }
 
     writing() {
+
+        const config = this.config.getAll();
+        console.log('>>> config ', config);
         const {
             destinationPath,
             moduleName,

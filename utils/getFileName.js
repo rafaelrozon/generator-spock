@@ -1,7 +1,12 @@
 const formatFilename = require('./formatFileName');
 
-module.exports = function(name, ext = 'jsx', path = null, skipFormat = false) {
-    const prefix = `${path || ''}${path ? '/' : ''}`;
+module.exports = function(
+    name,
+    ext = 'jsx',
+    pathStr = null,
+    skipFormat = false
+) {
+    const prefix = `${pathStr || ''}${pathStr ? '/' : ''}`;
 
     if (skipFormat) {
         return `${prefix}${name}.${ext}`;

@@ -3,13 +3,7 @@
     "promptValues": {
       "authorName": "Rafael Rozon",
       "authorEmail": "rafaelrozon.developer@gmail.com",
-      "authorUrl": "rafaelrozon.com",
-
-    }
-  },
-  "generator-spock-2": {
-    "promptValues": {
-      "es6": true
+      "authorUrl": "rafaelrozon.com"
     }
   }
 }
