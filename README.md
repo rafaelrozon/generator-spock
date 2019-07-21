@@ -1,5 +1,9 @@
-# generator-spock [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
->
+# generator-spock
+
+![alt text](https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjC-Nqig8XjAhVE4VQKHVQDAPQQjRx6BAgBEAU&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Ffeastoffools%2F3527211759&psig=AOvVaw0iQ22luAvR21EKuzkPc-rx&ust=1563764606506685 "Spock")
+
+[![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
 
 ## Installation
 
@@ -21,11 +25,9 @@ npm install -g generator-spock
 All generators take these options:
 - destinationFolder: where to create the file, defaults to current directory
 - moduleName: the name of what you want to create, e.g.: MyComponent, reducer, CartActions, etc
-- filename: unless specified the filename is the module name. Don't need to pass the extension
+- filename: unless specified the filename is the module name. You don't need to pass the extension
 
 ### Action Generator
-
-Command:
 
 ```bash
 yo spock:action
@@ -45,8 +47,6 @@ Actions example output:
 ```
 
 ### Component Generator
-
-Command:
 
 ```bash
 yo spock:component
@@ -73,7 +73,7 @@ export default class ShoppingCart extends React.Component {
 }
 ```
 
-Function option example output:
+Functional option example output:
 
 ```jsx
 /**
@@ -224,7 +224,7 @@ Command:
 yo spock:selector
 ```
 
-The reducer generator also supports typescript. The only difference will be the file extension.
+The selector generator also supports typescript. The only difference will be the file extension.
 
 Example output:
 
@@ -300,7 +300,5 @@ MIT © [Rafael Rozon](rafaelrozon.com)
 
 [npm-image]: https://badge.fury.io/js/generator-spock-2.svg
 [npm-url]: https://npmjs.org/package/generator-spock-2
-[travis-image]: https://travis-ci.org/rafaelrozon/generator-spock-2.svg?branch=master
-[travis-url]: https://travis-ci.org/rafaelrozon/generator-spock-2
 [daviddm-image]: https://david-dm.org/rafaelrozon/generator-spock-2.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/rafaelrozon/generator-spock-2
