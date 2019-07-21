@@ -1,5 +1,9 @@
 const Base = require('../base');
 
+const CLASS_TYPESCRIPT = 'class typescript';
+const FUNCTIONAL_TYPESCRIPT = 'functional typescript';
+const FUNCTIONAL_NATIVE = 'functional native';
+
 module.exports = class extends Base {
     prompting() {
         if (this.shouldPrompt()) {
@@ -12,7 +16,9 @@ module.exports = class extends Base {
                         'class',
                         'functional',
                         'connected',
-                        'functional_native'
+                        FUNCTIONAL_NATIVE,
+                        CLASS_TYPESCRIPT,
+                        FUNCTIONAL_TYPESCRIPT
                     ]
                 },
                 this.utils.getModuleNamePrompt(),
@@ -31,7 +37,9 @@ module.exports = class extends Base {
 
         const file = this.utils.getFilename(
             filename || moduleName,
-            'jsx',
+            type === FUNCTIONAL_TYPESCRIPT || type === CLASS_TYPESCRIPT
+                ? '.tsx'
+                : '.jsx',
             destinationPath,
             typeof filename !== 'undefined'
         );
@@ -40,7 +48,16 @@ module.exports = class extends Base {
             moduleName
         });
 
-        const source = `_${type}_component.template.js`;
+        const typeMapping = {
+            class: 'class',
+            functional: 'functional',
+            connected: 'connected',
+            [CLASS_TYPESCRIPT]: 'class_typescript',
+            [FUNCTIONAL_TYPESCRIPT]: 'functional_typescript',
+            [FUNCTIONAL_NATIVE]: 'functional_native'
+        };
+
+        const source = `_${typeMapping[type]}_component.template.js`;
 
         this.fs.copyTpl(
             this.templatePath(source),

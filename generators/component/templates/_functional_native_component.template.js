@@ -1,8 +1,8 @@
 /**
  * <%= moduleName %>
  */
-const React = require('react');
-const { View } = require('react-native');
+import React from 'react';
+import { View } from 'react-native';
 
 const <%= moduleName %> = () => {
     return (
@@ -12,4 +12,4 @@ const <%= moduleName %> = () => {
     );
 };
 
-module.exports = <%= moduleName %>;
+export default <%= moduleName %>;

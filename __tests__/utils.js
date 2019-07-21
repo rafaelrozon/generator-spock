@@ -20,9 +20,29 @@ describe('utils tests', () => {
         });
 
         it('gets a filename passing all params', () => {
-            const input = 'myButton';
+            const name = 'myButton';
             const expected = '/tmp/MyButton.js';
-            const result = utils.getFilename(input, 'js', '/tmp');
+            const ext = '.js';
+            const pathStr = '/tmp';
+            const result = utils.getFilename(name, ext, pathStr);
+            expect(result).toBe(expected);
+        });
+
+        it('returns a file name if user pass extension', () => {
+            const name = 'myButton.js';
+            const expected = '/tmp/MyButton.js';
+            const ext = '.js';
+            const pathStr = '/tmp';
+            const result = utils.getFilename(name, ext, pathStr);
+            expect(result).toBe(expected);
+        });
+
+        it('returns a file name if user pass bad extension', () => {
+            const name = 'myButton.';
+            const expected = '/tmp/MyButton.js';
+            const ext = '.js';
+            const pathStr = '/tmp';
+            const result = utils.getFilename(name, ext, pathStr);
             expect(result).toBe(expected);
         });
     });
@@ -30,14 +50,25 @@ describe('utils tests', () => {
     describe('getTemplateData', () => {
         it('returns default data for template', () => {
             const expected = {
+                name: '',
+                moduleCss: 'my-button',
+                moduleName: 'myButton'
+            };
+            const input = {
+                moduleName: 'myButton'
+            };
+            const result = utils.getTemplateData(input);
+            expect(result).toEqual(expected);
+        });
+
+        it('returns default data for template', () => {
+            const expected = {
                 name: 'Component',
                 moduleCss: 'my-button',
-                moduleBaseName: 'MyButton',
                 moduleName: 'myButton'
             };
             const input = {
                 name: 'Component',
-                moduleBaseName: 'MyButton',
                 moduleName: 'myButton'
             };
             const result = utils.getTemplateData(input);

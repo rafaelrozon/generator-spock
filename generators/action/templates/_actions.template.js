@@ -1,4 +1,8 @@
 /**
  * <%= moduleName %> Actions
  */
-import * as Types from './<%= typesFilename %>';
+//  Action Types
+
+// Action Creators
+
+// Async Actions

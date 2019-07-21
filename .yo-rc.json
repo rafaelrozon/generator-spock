@@ -5,5 +5,8 @@
       "authorEmail": "rafaelrozon.developer@gmail.com",
       "authorUrl": "rafaelrozon.com"
     }
+  },
+  "generator-spock": {
+    "test": 123
   }
 }

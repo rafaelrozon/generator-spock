@@ -1,4 +1,4 @@
-# generator-spock-2 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-spock [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 >
 
 ## Installation
@@ -19,9 +19,9 @@ npm install -g generator-spock
 
 ## Options
 All generators take these options:
-- destinationPath: where to output, defaults to current directory
-- moduleName
-- filename: unless specified the filename is the module name
+- destinationFolder: where to create the file, defaults to current directory
+- moduleName: the name of what you want to create, e.g.: MyComponent, reducer, CartActions, etc
+- filename: unless specified the filename is the module name. Don't need to pass the extension
 
 ### Action Generator
 
@@ -31,23 +31,17 @@ Command:
 yo spock:action
 ```
 
-Options: actions and types
-
-Actions option example output:
+Actions example output:
 
 ```jsx
 /**
-* ShoppingCart Actions
-*/
-import * as Types from './types';
-```
+ * ShoppingCart Actions
+ */
+//  Action Types
 
-Types option example output:
+// Action Creators
 
-```jsx
-/**
-* ShoppingCart Types
-*/
+// Async Actions
 ```
 
 ### Component Generator
@@ -58,82 +52,127 @@ Command:
 yo spock:component
 ```
 
-Options: class, functional, connected, native
+Options: class, functional, connected, native, class typescript, functional typescript
 
 Class option example output:
 
 ```jsx
 /**
-* DatePicker
-*/
+ * ShoppingCart
+ */
 import React from 'react';
 
-export default class DatePicker extends React.Component {
+export default class ShoppingCart extends React.Component {
     render() {
         return (
-            <div className="date-picker">
-                DatePicker component
+            <div className="shopping-cart">
+                ShoppingCart component
             </div>
         );
     }
 }
 ```
 
-
 Function option example output:
 
 ```jsx
 /**
-* DatePicker
-*/
+ * ShoppingCart
+ */
 import React from 'react';
 
-const DatePicker = () => {
+const ShoppingCart = () => {
     return (
-        <div className="date-picker">
-            DatePicker component
+        <div className="shopping-cart">
+            ShoppingCart component
         </div>
     );
 };
 
-export default DatePicker;
+export default ShoppingCart;
 ```
 
 Connected option example output:
 
 ```jsx
 /**
-* DatePicker
-*/
+ * ShoppingCart
+ */
 import React from 'react';
 import { connect } from 'react-redux';
-import DatePicker from './DatePicker';
+import ShoppingCart from './ShoppingCart';
 
 const makeMapToStateProps = (state) => ({})
 
 const mapDispatchToProps = (dispath) => ({});
 
-export default connect(makeMapToStateProps, mapDispatchToProps)
+export default connect(makeMapToStateProps, mapDispatchToProps)(ShoppingCart);
 ```
 
 Functional Native option example output:
 
 ```jsx
 /**
-* DatePicker
-*/
-const React = require('react');
-const { View } = require('react-native');
+ * ShoppingCart
+ */
+import React from 'react';
+import { View } from 'react-native';
 
-const DatePicker = () => {
+const ShoppingCart = () => {
     return (
         <View>
-            DatePicker component
+            ShoppingCart component
         </View>
     );
 };
 
-module.exports = DatePicker;
+export default ShoppingCart;
+```
+
+Class Typescript option example output:
+
+```tsx
+/**
+ * ShoppingCart
+ */
+import * as React from 'react';
+
+interface Props {
+
+}
+
+export default class ShoppingCart extends React.Component<Props, {}> {
+    render() {
+        return (
+            <div className="shopping-cart">
+                ShoppingCart component
+            </div>
+        );
+    }
+}
+```
+
+Functional Typescript option example output:
+
+```tsx
+/**
+ * ShoppingCart
+ */
+import * as React from 'react';
+
+interface Props {
+
+}
+
+const ShoppingCart: React.FC = (props: Props) => {
+    return (
+        <div className="shopping-cart">
+            ShoppingCart component
+        </div>
+    );
+};
+
+export default ShoppingCart;
 ```
 
 ### Reducer Generator
@@ -143,6 +182,8 @@ Command:
 ```bash
 yo spock:reducer
 ```
+
+The reducer generator also supports typescript. The only difference will be the file extension.
 
 Options: page, module
 
@@ -183,13 +224,22 @@ Command:
 yo spock:selector
 ```
 
-example Output:
+The reducer generator also supports typescript. The only difference will be the file extension.
+
+Example output:
 
 ```jsx
 /**
-* ShoppingCart Selectors
-*/
+ * ShoppingCart Selectors
+ */
 import { createSelector } from 'reselect';
+
+const rootSelector = state => state;
+
+export const sampleSelector = createSelector(
+    [rootSelector],
+    state => state
+);
 ```
 
 
@@ -201,7 +251,7 @@ Command:
 yo spock:story
 ```
 
-example Output
+Example output
 
 ```jsx
 /**
@@ -222,8 +272,26 @@ stories.add('ShoppingCart', () => (
 ));
 ```
 
-### TODO
+Example typescript output
 
+```tsx
+/**
+ * ShoppingCart Stories
+ */
+import * as React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, text, boolean, number, object, array } from '@storybook/addon-knobs';
+
+const stories = storiesOf('ShoppingCart', module);
+
+stories.addDecorator(withKnobs);
+
+stories.add('ShoppingCart', () => (
+    <div>
+        ShoppingCart
+    </div>
+));
+```
 
 ## License
 

@@ -7,6 +7,7 @@ module.exports = class extends Base {
     prompting() {
         if (this.shouldPrompt()) {
             const prompts = [
+                this.utils.getTypescriptPrompt(),
                 {
                     type: 'list',
                     name: 'type',
@@ -15,14 +16,6 @@ module.exports = class extends Base {
                 },
                 this.utils.getModuleNamePrompt(),
                 this.utils.getFilenamePrompt(),
-                {
-                    type: 'input',
-                    name: 'typesFilename',
-                    message: 'Enter name of action types file',
-                    when: ({ type }) => {
-                        return type === moduleReducer;
-                    }
-                },
                 this.utils.getDestFolderPrompt()
             ];
 
@@ -35,24 +28,21 @@ module.exports = class extends Base {
     writing() {
         const {
             moduleName,
-            destinationFolder,
+            destinationPath,
             type,
             filename,
-            typesFilename
+            isTypescript
         } = this.options;
-
-        console.log(this.config.set('test', 123));
 
         const file = this.utils.getFilename(
             filename || moduleName,
-            'js',
-            destinationFolder,
+            isTypescript === 'yes' ? '.ts' : '.js',
+            destinationPath,
             typeof filename !== 'undefined'
         );
 
         const templateData = this.utils.getTemplateData({
-            moduleName,
-            typesFilename
+            moduleName
         });
 
         const source = `_${type}_reducer.template.js`;

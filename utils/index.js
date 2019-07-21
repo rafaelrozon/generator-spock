@@ -4,6 +4,7 @@ const getTemplateData = require('./getTemplateData');
 const getModuleNamePrompt = require('./getModuleNamePrompt');
 const getDestFolderPrompt = require('./getDestFolderPrompt');
 const getFilenamePrompt = require('./getFilenamePrompt');
+const getTypescriptPrompt = require('./getTypescriptPrompt');
 
 module.exports = {
     formatFilename,
@@ -11,5 +12,6 @@ module.exports = {
     getTemplateData,
     getModuleNamePrompt,
     getDestFolderPrompt,
-    getFilenamePrompt
+    getFilenamePrompt,
+    getTypescriptPrompt
 };

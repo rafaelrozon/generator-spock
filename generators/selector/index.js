@@ -4,6 +4,7 @@ module.exports = class extends Base {
     prompting() {
         if (this.shouldPrompt()) {
             const prompts = [
+                this.utils.getTypescriptPrompt(),
                 this.utils.getModuleNamePrompt(),
                 this.utils.getDestFolderPrompt()
             ];
@@ -15,11 +16,16 @@ module.exports = class extends Base {
     }
 
     writing() {
-        const { destinationPath, moduleName, filename } = this.options;
+        const {
+            destinationPath,
+            moduleName,
+            filename,
+            isTypescript
+        } = this.options;
 
         const file = this.utils.getFilename(
             filename || moduleName,
-            'js',
+            isTypescript === 'yes' ? '.ts' : '.js',
             destinationPath,
             typeof filename !== 'undefined'
         );

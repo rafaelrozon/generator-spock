@@ -1,5 +1,5 @@
 /**
- * <%= moduleName %> Selectors
+ * ShoppingCart Selectors
  */
 import { createSelector } from 'reselect';
 
