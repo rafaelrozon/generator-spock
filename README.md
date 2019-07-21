@@ -1,6 +1,6 @@
 # generator-spock
 
-![Spock - Star Trek](https://upload.wikimedia.org/wikipedia/commons/e/eb/Leonard_Nimoy_as_Spock_Star_Trek.jpg)
+![Spock - Star Trek](https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Leonard_Nimoy_as_Spock_Star_Trek.jpg/374px-Leonard_Nimoy_as_Spock_Star_Trek.jpg)
 
 [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
