@@ -7,10 +7,7 @@
         "npm": ">= 4.0.0"
     },
     "repository": "rafaelrozon/generator-spock",
-    "author": {
-        "email": "rafaelrozon.developer@gmail.com",
-        "name": "Rafael Rozon"
-    },
+    "author": "Rafael Rozon",
     "keywords": [
         "react",
         "redux",
