@@ -177,8 +177,6 @@ export default ShoppingCart;
 
 ### Reducer Generator
 
-Command:
-
 ```bash
 yo spock:reducer
 ```
@@ -218,8 +216,6 @@ export default (state = {}, action) => {
 
 ### Selector Generator
 
-Command:
-
 ```bash
 yo spock:selector
 ```
@@ -244,8 +240,6 @@ export const sampleSelector = createSelector(
 
 
 ### Story Generator
-
-Command:
 
 ```bash
 yo spock:story
