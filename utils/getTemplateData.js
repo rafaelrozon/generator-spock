@@ -5,7 +5,7 @@ module.exports = function(props) {
 
     return {
         name,
-        moduleCss: changeCase.kebabCase(moduleName),
+        moduleCss: changeCase.lowerCase(changeCase.paramCase(moduleName)),
         moduleName: moduleName || '',
         ...rest
     };

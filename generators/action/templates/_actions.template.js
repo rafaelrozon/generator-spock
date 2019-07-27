@@ -1,6 +1,7 @@
 /**
  * <%= moduleName %> Actions
  */
+
 //  Action Types
 
 // Action Creators

@@ -2,9 +2,6 @@
 
 ![Spock - Star Trek](https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Leonard_Nimoy_as_Spock_Star_Trek.jpg/374px-Leonard_Nimoy_as_Spock_Star_Trek.jpg)
 
-[![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
-
-
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-spock using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
@@ -39,6 +36,7 @@ Actions example output:
 /**
  * ShoppingCart Actions
  */
+
 //  Action Types
 
 // Action Creators
@@ -108,6 +106,7 @@ const mapDispatchToProps = (dispath) => ({});
 
 export default connect(makeMapToStateProps, mapDispatchToProps)(ShoppingCart);
 ```
+
 
 Functional Native option example output:
 
@@ -202,12 +201,10 @@ Module option example output:
 
 ```jsx
 /**
-* ShoppingCart Reducer
-*/
-import * as Types from './types';
-
+ * ShoppingCart Reducer
+ */
 export default (state = {}, action) => {
-    switch(action.type) {
+    switch (action.type) {
         default:
             return state;
     }
@@ -249,15 +246,12 @@ Example output
 
 ```jsx
 /**
-* ShoppingCart Stories
-*/
+ * ShoppingCart Stories
+ */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number, object, array } from '@storybook/addon-knobs';
 
 const stories = storiesOf('ShoppingCart', module);
-
-stories.addDecorator(withKnobs);
 
 stories.add('ShoppingCart', () => (
     <div>
@@ -274,11 +268,8 @@ Example typescript output
  */
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number, object, array } from '@storybook/addon-knobs';
 
 const stories = storiesOf('ShoppingCart', module);
-
-stories.addDecorator(withKnobs);
 
 stories.add('ShoppingCart', () => (
     <div>
