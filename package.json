@@ -1,6 +1,6 @@
 {
     "name": "generator-spock",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "React/Redux Yeoman Generators",
     "license": "MIT",
     "engines": {
@@ -20,7 +20,8 @@
     ],
     "main": "generators/index.js",
     "files": [
-        "generators"
+        "generators",
+        "utils"
     ],
     "scripts": {
         "clean": "rm -rf node_modules",
